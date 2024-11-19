@@ -1,11 +1,17 @@
 package org.example.javafx;
 
 import javafx.application.Application;
+import javafx.geometry.Insets;
+import javafx.geometry.Pos;
 import javafx.scene.Scene;
 import javafx.scene.control.Button;
 import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
+import javafx.scene.text.Font;
 import javafx.stage.Stage;
+
+import javax.swing.plaf.ColorUIResource;
+import java.util.concurrent.CyclicBarrier;
 
 public class Calculator extends Application {
     private TextField display = new TextField();
@@ -13,10 +19,21 @@ public class Calculator extends Application {
     @Override
     public void start(Stage primaryStage) {
         GridPane grid = new GridPane();
+        grid.setAlignment(Pos.CENTER);
+        grid.setHgap(10);
+        grid.setVgap(10);
+        grid.setPadding(new Insets(25, 25, 25, 25));
 
+
+        // Увеличиваем шрифт для display
+        display.setFont(Font.font("Times New Roman", 24)); //
         display.setEditable(false);
-        grid.add(display, 0, 0, 4, 1);
+        display.setPrefWidth(250);
+        display.setPrefHeight(50);
 
+
+        grid.add(display, 0, 0, 4, 1);
+        display.requestFocus();
         String[] buttons = {
                 "7", "8", "9", "/",
                 "4", "5", "6", "*",
@@ -28,8 +45,9 @@ public class Calculator extends Application {
         int col = 0;
         for (String label : buttons) {
             Button button = new Button(label);
-            button.setPrefHeight(75);
-            button.setPrefWidth(75);
+            button.setFont(Font.font("Times New Roman", 20));
+            button.setPrefHeight(50);
+            button.setPrefWidth(50);
             grid.add(button, col, row);
             button.setOnAction(e -> handleButtonPress(label));
             col++;
@@ -39,11 +57,12 @@ public class Calculator extends Application {
             }
         }
 
-        Scene scene = new Scene(grid, 300, 300);
+        Scene scene = new Scene(grid, 300, 350); // Повышаем высоту сцены
         primaryStage.setTitle("Калькулятор");
         primaryStage.setScene(scene);
         primaryStage.show();
     }
+
 
     private double temp = 0;
     private String lastOperator = "";
@@ -68,11 +87,12 @@ public class Calculator extends Application {
         }
     }
 
+
     private void compute(String operator) {
         double currentValue = Double.parseDouble(display.getText());
         switch (operator) {
             case "+":
-                display.setText(String.valueOf(temp + currentValue));
+                display.setText(String.valueOf(temp + currentValue ));
                 break;
             case "-":
                 display.setText(String.valueOf(temp - currentValue));
@@ -93,4 +113,5 @@ public class Calculator extends Application {
     public static void main(String[] args) {
         launch(args);
     }
+
 }
