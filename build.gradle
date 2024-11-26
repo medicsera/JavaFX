@@ -26,8 +26,8 @@ tasks.withType(JavaCompile) {
 }
 
 application {
-  mainModule = 'org.example.javafx'
-  mainClass = 'org.example.javafx.HelloApplication'
+  mainModule = 'org.example.javafx.fx1'
+  mainClass = 'org.example.javafx.fx2.main'
 }
 
 javafx {

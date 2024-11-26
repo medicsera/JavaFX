@@ -12,6 +12,8 @@ module org.example.javafx {
     requires com.almasb.fxgl.all;
     requires java.desktop;
 
-    opens org.example.javafx to javafx.fxml;
-    exports org.example.javafx;
+    exports org.example.javafx.fx1;
+    exports org.example.javafx.fx2;
+    opens org.example.javafx.fx1 to javafx.fxml;
+    opens org.example.javafx.fx2 to javafx.fxml;
 }

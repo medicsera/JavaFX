@@ -1,4 +1,4 @@
-package org.example.javafx;
+package org.example.javafx.fx1;
 
 import javafx.application.Application;
 import javafx.geometry.Insets;
@@ -9,9 +9,6 @@ import javafx.scene.control.TextField;
 import javafx.scene.layout.GridPane;
 import javafx.scene.text.Font;
 import javafx.stage.Stage;
-
-import javax.swing.plaf.ColorUIResource;
-import java.util.concurrent.CyclicBarrier;
 
 public class Calculator extends Application {
     private TextField display = new TextField();
